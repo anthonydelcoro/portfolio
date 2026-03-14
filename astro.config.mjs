@@ -1,26 +1,27 @@
-// @ts-check
-import { defineConfig } from 'astro/config';
-import starlight from '@astrojs/starlight';
+import { defineConfig } from 'astro/config'
+import starlight from '@astrojs/starlight'
 
-// https://astro.build/config
 export default defineConfig({
-	integrations: [
-		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
-			sidebar: [
-				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'projects/projects' },
-					],
-				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
-			],
-		}),
-	],
-});
+  site: 'https://anthonydelcoro.github.io',
+  base: '/portfolio',
+  integrations: [
+    starlight({
+      title: 'My Site',
+      sidebar: [
+        { slug: 'resume' },
+        {
+          label: 'Projects',
+          autogenerate: { directory: 'projects' }
+        },
+        {
+          label: 'Travel',
+          autogenerate: { directory: 'travel' }
+        },
+        {
+          label: 'Notes',
+          autogenerate: { directory: 'notes' }
+        }
+      ]
+    })
+  ]
+})
