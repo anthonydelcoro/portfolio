@@ -19,17 +19,7 @@ export default defineConfig({
         { label: 'Home', link: '/' },
         { slug: 'resume' },
         { slug: 'contact' },
-        {
-          label: 'Projects',
-          collapsed: true,
-          items: [
-            { slug: 'projects/projects' },
-            { slug: 'projects/astrobotics' },
-            { slug: 'projects/in-space-additive-manufacturing' },
-            { slug: 'projects/vex-robotics' },
-            { slug: 'projects/eagle-scout' },
-          ],
-        },
+        { label: 'Projects', link: '/projects/projects/' },
         { label: 'Travel', link: '/travel/' },
         { slug: 'reading' },
         { slug: 'wiki/wiki' }
