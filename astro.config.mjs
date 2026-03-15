@@ -6,21 +6,16 @@ export default defineConfig({
   base: '/portfolio',
   integrations: [
     starlight({
-      title: 'My Site',
+      title: 'Anthony Del Coro',
+      components: {
+        Header: './src/components/Header.astro',
+      },
+      customCss: ['./src/styles/custom.css'],
       sidebar: [
         { slug: 'resume' },
-        {
-          label: 'Projects',
-          autogenerate: { directory: 'projects' }
-        },
-        {
-          label: 'Travel',
-          autogenerate: { directory: 'travel' }
-        },
-        {
-          label: 'Notes',
-          autogenerate: { directory: 'notes' }
-        }
+        { slug: 'projects/projects' },
+        { slug: 'travel/travel' },
+        { slug: 'wiki/wiki' }
       ]
     })
   ]
