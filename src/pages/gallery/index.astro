@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import { getAlbums } from '../../utils/albums';
 
 const albums = await getAlbums();
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <StarlightPage frontmatter={{ title: 'Photo Gallery', tableOfContents: false }}>
@@ -12,7 +13,7 @@ const albums = await getAlbums();
     {albums.length > 0 ? (
       <div class="gallery-grid">
         {albums.map((album) => (
-          <a href={`${import.meta.env.BASE_URL}gallery/${album.id}/`} class="gallery-card">
+          <a href={`${base}/gallery/${album.id}/`} class="gallery-card">
             <Image
               src={album.thumbnail}
               alt={album.title}
