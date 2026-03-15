@@ -235,6 +235,104 @@ footer .pagination-links {
   background: var(--sl-color-gray-5);
 }
 
+/* Photo Gallery – index grid */
+.gallery-page p {
+  margin-bottom: 1.5rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-thumbnail {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.gallery-card-info {
+  padding: 0.75rem;
+  text-align: center;
+  font-size: var(--sl-text-sm);
+  background: var(--sl-color-gray-6);
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+[data-theme='light'] .gallery-card-info {
+  background: var(--sl-color-gray-7);
+}
+
+/* Photo Gallery – album masonry layout */
+.gallery-album {
+  margin-top: 0.5rem;
+}
+
+.gallery-masonry {
+  columns: 2;
+  column-gap: 0.75rem;
+}
+
+@media (min-width: 50rem) {
+  .gallery-masonry {
+    columns: 3;
+  }
+}
+
+.gallery-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  break-inside: avoid;
+  margin-bottom: 0.75rem;
+  border-radius: 0.375rem;
+  transition: opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gallery-photo:hover {
+  opacity: 0.92;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-back {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.gallery-back a {
+  color: var(--sl-color-text-accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.gallery-back a:hover {
+  text-decoration: underline;
+}
+
+.gallery-empty {
+  text-align: center;
+  color: var(--sl-color-gray-3);
+  padding: 3rem 0;
+}
+
 /* Keep header and content area consistent: same spacing with or without "On this page" TOC */
 :root {
   --__toc-width: var(--sl-sidebar-width);

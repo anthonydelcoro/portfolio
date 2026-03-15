@@ -1,0 +1,35 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { Image } from 'astro:assets';
+import { getAlbums } from '../../utils/albums';
+
+const albums = await getAlbums();
+---
+
+<StarlightPage frontmatter={{ title: 'Photo Gallery', tableOfContents: false }}>
+  <div class="gallery-page">
+    <p>A collection of photos from my travels. Click on an album to view the full gallery.</p>
+    {albums.length > 0 ? (
+      <div class="gallery-grid">
+        {albums.map((album) => (
+          <a href={`${import.meta.env.BASE_URL}gallery/${album.id}/`} class="gallery-card">
+            <Image
+              src={album.thumbnail}
+              alt={album.title}
+              width={600}
+              quality="mid"
+              class="gallery-thumbnail"
+            />
+            <div class="gallery-card-info">
+              <strong>{album.title}</strong>
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="gallery-empty">
+        No albums found. Add photos to <code>src/assets/travel/&lt;album-name&gt;/</code> to get started.
+      </p>
+    )}
+  </div>
+</StarlightPage>

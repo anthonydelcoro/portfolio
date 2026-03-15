@@ -53,6 +53,7 @@ export default defineConfig({
             { slug: 'travel/arches-national-park' },
           ],
         },
+        { label: 'Photo Gallery', link: '/gallery/' },
         { slug: 'reading' },
         { slug: 'wiki/wiki' }
       ]
