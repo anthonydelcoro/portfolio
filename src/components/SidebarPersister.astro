@@ -1,0 +1,58 @@
+---
+/*
+  Override: Do not restore sidebar details open state from session storage,
+  so groups stay collapsed when navigating (open state comes only from config).
+  Scroll position is still restored.
+*/
+const sidebar = Astro.locals.starlightRoute?.sidebar ?? [];
+function simpleHash(arr: unknown[]): string {
+  let h = 0;
+  const s = JSON.stringify(arr);
+  for (let i = 0; i < s.length; i++) h = (h << 5) - h + s.charCodeAt(i);
+  return (h >>> 0).toString(36).padStart(7, '0');
+}
+const hash = simpleHash(sidebar as unknown[]);
+
+declare global {
+  interface Window {
+    _starlightScrollRestore?: number;
+  }
+}
+---
+
+<sl-sidebar-state-persist data-hash={hash}>
+  <script is:inline aria-hidden="true">
+    (() => {
+      try {
+        if (!matchMedia('(min-width: 50em)').matches) return;
+        const target = document.querySelector('sl-sidebar-state-persist');
+        const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+        if (target && state && target.dataset.hash === state.hash) {
+          window._starlightScrollRestore = state.scroll;
+        }
+        customElements.define('sl-sidebar-restore', class extends HTMLElement {
+          connectedCallback() {}
+        });
+      } catch {}
+    })();
+  </script>
+
+  <slot />
+
+  <script is:inline aria-hidden="true">
+    (() => {
+      const scroller = document.getElementById('starlight__sidebar');
+      if (!window._starlightScrollRestore || !scroller) return;
+      scroller.scrollTop = window._starlightScrollRestore;
+      delete window._starlightScrollRestore;
+    })();
+  </script>
+</sl-sidebar-state-persist>
+
+<style>
+  @layer starlight.core {
+    sl-sidebar-state-persist {
+      display: contents;
+    }
+  }
+</style>
