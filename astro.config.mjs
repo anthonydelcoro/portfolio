@@ -8,6 +8,7 @@ export default defineConfig({
     starlight({
       title: 'Anthony Del Coro',
       components: {
+        Head: './src/components/Head.astro',
         Header: './src/components/Header.astro',
         TwoColumnContent: './src/components/TwoColumnContent.astro',
       },
@@ -16,7 +17,7 @@ export default defineConfig({
         { label: 'Home', link: '/' },
         { slug: 'resume' },
         { slug: 'contact' },
-        { slug: 'projects/projects' },
+        { label: 'Projects', autogenerate: { directory: 'projects' } },
         { slug: 'travel/travel' },
         { slug: 'wiki/wiki' }
       ]

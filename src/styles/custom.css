@@ -42,6 +42,52 @@
   color: var(--sl-color-white);
 }
 
+/* Projects page – date after header, before description */
+.projects-page .project-date {
+  display: block;
+  font-size: var(--sl-text-sm);
+  color: var(--sl-color-gray-2);
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Projects page – section images centered and clickable, extra space above */
+.projects-page .project-figure {
+  width: 75%;
+  margin: 0.75rem auto 1.5rem auto;
+  margin-top: 1.25rem;
+}
+
+.projects-page .project-figure a {
+  display: block;
+}
+
+.projects-page .project-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--sl-border-radius-medium);
+}
+
+/* Projects page – title links styled like regular headers */
+.projects-page h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.projects-page h2 a:hover {
+  text-decoration: underline;
+}
+
+/* Projects page – divider spacing (same as resume: more above divider, minimal between divider and header) */
+.projects-page hr {
+  margin-top: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.projects-page hr + * {
+  margin-top: 0.5rem !important;
+}
+
 /* Resume page – images at 75% width, centered */
 .resume-figure {
   width: 75%;

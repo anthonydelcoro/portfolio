@@ -1,0 +1,10 @@
+---
+const { head, entry } = Astro.locals.starlightRoute;
+const pageTitle = entry.data.title;
+---
+{head.map(({ tag: Tag, attrs, content }) => {
+  if (Tag === 'title') {
+    return <title set:html={pageTitle} />;
+  }
+  return <Tag {...attrs} set:html={content} />;
+})}
