@@ -73,7 +73,7 @@
 .projects-page .project-figure img {
   width: 100%;
   height: auto;
-  border-radius: var(--sl-border-radius-medium);
+  border-radius: 0.5rem;
 }
 
 /* Projects page – title links styled like regular headers */
@@ -105,6 +105,7 @@
 .resume-figure img {
   width: 100%;
   height: auto;
+  border-radius: 0.5rem;
 }
 
 /* Resume page – divider spacing: more above divider, minimal between divider and header */
