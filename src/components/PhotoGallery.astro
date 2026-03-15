@@ -1,0 +1,119 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  albumId: string;
+  title?: string;
+}
+
+const { albumId, title = 'Travel' } = Astro.props;
+
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/travel/**/*.{jpg,jpeg,png,webp}',
+  { eager: true }
+);
+
+const albumImages = Object.entries(allImages)
+  .filter(([path]) => {
+    const segments = path.split('/');
+    const travelIdx = segments.indexOf('travel');
+    const folder = segments[travelIdx + 1];
+    return folder === albumId && folder !== 'travel_thumbnails';
+  })
+  .map(([path, mod]) => ({
+    src: mod.default,
+    name: path.split('/').pop()?.replace(/\.[^.]+$/, '') || '',
+  }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+---
+
+{albumImages.length > 0 ? (
+  <div class="photo-gallery" id="photo-gallery">
+    {albumImages.map(({ src }, idx) => (
+      <div class="photo-gallery-item" data-index={idx}>
+        <Image
+          src={src}
+          alt={`Photo from ${title}`}
+          width={720}
+          quality="mid"
+          loading="lazy"
+          class="photo-gallery-img"
+        />
+      </div>
+    ))}
+  </div>
+  <div class="lightbox-overlay" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-prev" aria-label="Previous photo">&#8249;</button>
+    <button class="lightbox-next" aria-label="Next photo">&#8250;</button>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="" />
+    </div>
+    <div class="lightbox-counter" id="lightbox-counter"></div>
+  </div>
+  <script>
+    const gallery = document.getElementById('photo-gallery');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+    const counter = document.getElementById('lightbox-counter');
+
+    if (gallery && lightbox && lightboxImg && counter) {
+      const images = Array.from(gallery.querySelectorAll('.photo-gallery-img')) as HTMLImageElement[];
+      let currentIndex = 0;
+
+      function showImage(index: number) {
+        if (index < 0 || index >= images.length) return;
+        currentIndex = index;
+        lightboxImg.src = images[index].currentSrc || images[index].src;
+        lightboxImg.alt = images[index].alt;
+        counter!.textContent = `${index + 1} / ${images.length}`;
+      }
+
+      function openLightbox(index: number) {
+        showImage(index);
+        lightbox!.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox!.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      gallery.querySelectorAll('.photo-gallery-item').forEach((item) => {
+        item.addEventListener('click', () => {
+          const index = parseInt(item.getAttribute('data-index') || '0');
+          openLightbox(index);
+        });
+      });
+
+      lightbox.querySelector('.lightbox-close')!.addEventListener('click', closeLightbox);
+
+      lightbox.querySelector('.lightbox-prev')!.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showImage((currentIndex - 1 + images.length) % images.length);
+      });
+
+      lightbox.querySelector('.lightbox-next')!.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showImage((currentIndex + 1) % images.length);
+      });
+
+      lightbox.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        if (target === lightbox || target.classList.contains('lightbox-content')) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (lightbox!.getAttribute('aria-hidden') === 'true') return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') showImage((currentIndex - 1 + images.length) % images.length);
+        if (e.key === 'ArrowRight') showImage((currentIndex + 1) % images.length);
+      });
+    }
+  </script>
+) : (
+  <p class="photo-gallery-empty"><em>Photos coming soon — add images to the album folder and rebuild.</em></p>
+)}

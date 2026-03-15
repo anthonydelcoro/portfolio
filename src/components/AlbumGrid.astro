@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+import { albums } from '../data/albums';
+
+const thumbnails = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/travel/travel_thumbnails/*.{jpg,jpeg,png,webp}',
+  { eager: true }
+);
+
+const albumsWithThumbnails = albums.map((album) => {
+  const match = Object.entries(thumbnails).find(([path]) => {
+    const filename = path.split('/').pop()?.replace(/\.[^.]+$/, '');
+    return filename === album.id;
+  });
+  return {
+    ...album,
+    thumbnail: match ? match[1].default : null,
+  };
+});
+---
+
+<div class="album-grid">
+  {albumsWithThumbnails.map((album) => (
+    <a href={`../${album.slug}/`} class="album-card">
+      {album.thumbnail ? (
+        <Image
+          src={album.thumbnail}
+          alt={album.title}
+          width={480}
+          quality="mid"
+          class="album-card-image"
+        />
+      ) : (
+        <div class="album-card-placeholder" />
+      )}
+      <div class="album-card-info">
+        <strong>{album.title}</strong>
+        <span class="album-card-year">{album.year}</span>
+      </div>
+    </a>
+  ))}
+</div>
