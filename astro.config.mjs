@@ -9,10 +9,13 @@ export default defineConfig({
       title: 'Anthony Del Coro',
       components: {
         Header: './src/components/Header.astro',
+        TwoColumnContent: './src/components/TwoColumnContent.astro',
       },
       customCss: ['./src/styles/custom.css'],
       sidebar: [
+        { label: 'Home', link: '/' },
         { slug: 'resume' },
+        { slug: 'contact' },
         { slug: 'projects/projects' },
         { slug: 'travel/travel' },
         { slug: 'wiki/wiki' }

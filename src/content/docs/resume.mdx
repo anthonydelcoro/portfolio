@@ -1,7 +1,97 @@
 ---
 title: Resume
-description: Short notes and documentation.
+description: Anthony Del Coro - Mechanical Engineering student at Virginia Tech.
 tableOfContents: false
 ---
 
-Your page content goes here.
+import { Image } from 'astro:assets';
+import altecImage from '../../assets/altec.webp';
+import astroImage from '../../assets/astro.webp';
+
+<div class="resume-content">
+
+## About Me
+
+I am a student studying at Virginia Tech, pursuing a degree in Mechanical Engineering. I enjoy learning and creating, with a passion for robotics and manufacturing.
+
+---
+
+## Education
+
+**Bachelor of Science in Mechanical Engineering** - Virginia Tech | 2027
+
+GPA: 3.4/4.0
+
+---
+
+## Experience
+
+### Engineering Intern - Caterpillar
+
+<span class="resume-date">Summer 2026</span>
+
+More details to come.
+
+### Product Engineering Co-op - Altec Industries
+
+<span class="resume-date">Summer/Fall 2024 & 2025</span>
+
+Supported development and testing of a new line of digger derricks. Designed assembly models and hydraulic systems, optimized components for manufacturability, performed design evaluations, and drafted prints for production and installation.
+
+**Summer/Fall 2024**
+
+- Conducted study on bolt pre-load vs. torque for pedestal installation, identifying issues in bolt suppliers' ductility.
+- Designed and manufactured a hydraulic pump pack focused on serviceability and modularity, featuring three variable displacement pumps in series with load-sensing for expanded crane applications.
+- Developed and manufactured a work platform for prototype derrick. Key features included a modular system for placing counterweight (upwards of 10 tons), removing the need for welding.
+
+<figure class="resume-figure">
+  <Image src={altecImage} alt="AC65 crane testing at Altec Industries" />
+  <figcaption>AC65 Crane Testing.</figcaption>
+</figure>
+
+**Summer/Fall 2025**
+
+- Integrated pilot-controlled option for new derrick trucks, specifying valves, creating system-wide plumbing diagrams, and developing installation assemblies.
+- Re-evaluated boom-stow design in response to crack propagation, utilizing ANSYS to assess the existing design and re-engineer the weldment to achieve an acceptable factor of safety and prevent recurrence of cracking.
+
+---
+
+## Projects
+
+### Member - In-Space Additive Manufacturing
+
+<span class="resume-date">2026 - Present</span>
+
+More details to come.
+
+### Manufacturing Lead - Astrobotics at Virginia Tech
+
+<span class="resume-date">2022 - 2026</span>
+
+Contributed to the design and construction of a semi-autonomous robot for building berms in a simulated lunar environment, showcasing skills in systems engineering, project management, and mechanical design.
+
+- Engineered chassis under mass budget, reducing manufacturing and assembly time by 2 months.
+- Promoted to Manufacturing Lead, training and consulting team members in DFM as well as physical manufacturing techniques. Led training on SolidWorks and FEA.
+
+<figure class="resume-figure">
+  <Image src={astroImage} alt="Astrobotics technical poster" />
+  <figcaption>Astrobotics Technical Poster, 2024-2025.</figcaption>
+</figure>
+
+### 3D Input Device
+
+Collaborated with a small group to develop a 3D input device for CAD software. The device allowed the user to translate the model by interpreting the 3D input from the device. Encompassed the entire design process: economics, design, prototyping, and marketing.
+
+### VEX Robotics
+
+Led a design team in developing a competitive VEX robot, applying advanced CAD, iterative prototyping, and problem-solving to deliver a high-performing competition system. Our team competed at the World Championship in Dallas, Texas.
+
+---
+
+## Skills
+
+**Manufacturing:** Vertical Mill, Waterjet, Lathe, 3-Axis CNC, Welding (TIG + MIG), 3D Printing
+
+**Software:** SolidWorks, ANSYS (Static Structural), MATLAB
+
+</div>
