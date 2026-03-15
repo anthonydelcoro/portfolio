@@ -20,11 +20,11 @@ export function formatAlbumTitle(id: string): string {
 }
 
 const thumbnails = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/assets/travel/travel_thumbnails/*.{jpeg,jpg,png,webp}'
+  '/src/assets/travel/travel_thumbnails/*.{jpeg,jpg,JPG,JPEG,png,webp}'
 );
 
 const allImages = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/assets/travel/**/*.{jpeg,jpg,png,webp}'
+  '/src/assets/travel/**/*.{jpeg,jpg,JPG,JPEG,png,webp}'
 );
 
 function getAlbumIdFromPath(path: string): string | null {
