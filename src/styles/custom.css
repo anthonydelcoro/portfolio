@@ -392,3 +392,36 @@ footer .pagination-links {
 :root {
   --__toc-width: var(--sl-sidebar-width);
 }
+
+/* Wiki page – smaller sub-headers and collapsible lists */
+.wiki-page h3 {
+  font-size: 0.8em; /* ~80% of default; tweak as needed */
+}
+/* Base toggle styling */
+.wiki-toggle {
+  margin: 0.25rem 0 0.5rem;
+}
+.wiki-toggle > summary {
+  cursor: pointer;
+  font-weight: 500;
+  list-style: none;
+}
+/* Hide default marker and use our own caret */
+.wiki-toggle > summary::-webkit-details-marker {
+  display: none;
+}
+.wiki-toggle > summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 0.4rem;
+  transform: rotate(0deg);
+  transition: transform 0.15s ease;
+}
+.wiki-toggle[open] > summary::before {
+  transform: rotate(90deg);
+}
+/* Nested toggles a bit indented and slightly smaller */
+.wiki-toggle--nested {
+  margin-left: 1rem;
+  font-size: 0.9em;
+}
