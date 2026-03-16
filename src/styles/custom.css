@@ -223,76 +223,33 @@ footer .pagination-links {
   margin-bottom: 0.25rem;
 }
 
-/* Shared visual style for toggle summaries and standalone items */
-.wiki-toggle > summary,
-.wiki-item {
-  display: block;
-  padding: 0.3rem 0.5rem 0.3rem 1.4rem;
-  border-left: 2px solid var(--sl-color-hairline);
-  border-radius: 0 0.25rem 0.25rem 0;
-  transition: background-color 0.15s;
-  position: relative;
-  font-size: var(--sl-text-body);
-}
-
-.wiki-toggle > summary:hover,
-.wiki-item:hover {
-  background: var(--sl-color-gray-6);
-}
-
-[data-theme='light'] .wiki-toggle > summary:hover,
-[data-theme='light'] .wiki-item:hover {
-  background: var(--sl-color-gray-7);
-}
-
-/* Links inherit color, no underline */
-.wiki-toggle > summary a,
-.wiki-item a {
-  text-decoration: none;
-  color: var(--sl-color-white);
-}
-
-[data-theme='light'] .wiki-toggle > summary a,
-[data-theme='light'] .wiki-item a {
-  color: var(--sl-color-black);
-}
-
-.wiki-toggle > summary a:hover,
-.wiki-item a:hover {
-  color: var(--sl-color-text-accent);
-}
-
-/* Caret on toggle summaries only */
+/* Let Starlight handle the details border + caret;
+   just override spacing and weight */
 .wiki-toggle {
   margin: 0;
 }
 
 .wiki-toggle > summary {
-  cursor: pointer;
-  list-style: none;
+  font-weight: 400;
 }
 
-.wiki-toggle > summary::-webkit-details-marker {
-  display: none;
+.wiki-toggle > summary a {
+  text-decoration: none;
+  color: inherit;
 }
 
-.wiki-toggle > summary::before {
-  content: "▸";
-  position: absolute;
-  left: 0.35rem;
-  font-size: 0.85em;
-  transition: transform 0.15s ease;
+.wiki-toggle > summary a:hover {
+  color: var(--sl-color-text-accent);
 }
 
-.wiki-toggle[open] > summary::before {
-  transform: rotate(90deg);
+.wiki-toggle[open] > summary {
+  margin-bottom: 0.2rem;
 }
 
-/* Child list under toggles */
+/* Child list: no left border, compact spacing */
 .wiki-toggle > ul {
-  margin: 0.1rem 0 0.25rem 1.4rem;
-  padding: 0 0 0 0.75rem;
-  border-left: 1px solid var(--sl-color-hairline);
+  margin: 0 0 0.15rem 0;
+  padding-left: 1.25rem;
   list-style: disc;
 }
 
@@ -308,6 +265,31 @@ footer .pagination-links {
 }
 
 .wiki-toggle > ul li a:hover {
+  color: var(--sl-color-text-accent);
+}
+
+/* Standalone item (no toggle) – same border as Starlight details */
+.wiki-item {
+  display: block;
+  border-inline-start: 2px solid var(--sl-color-gray-5);
+  padding: 0.35rem 0.5rem 0.35rem 1rem;
+  transition: border-color 0.2s;
+}
+
+.wiki-item:hover {
+  border-inline-start-color: var(--sl-color-text-accent);
+}
+
+.wiki-item a {
+  text-decoration: none;
+  color: var(--sl-color-white);
+}
+
+[data-theme='light'] .wiki-item a {
+  color: var(--sl-color-black);
+}
+
+.wiki-item a:hover {
   color: var(--sl-color-text-accent);
 }
 
