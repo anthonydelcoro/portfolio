@@ -4,6 +4,13 @@
 $ErrorActionPreference = "Stop"
 $travelRoot = "src/assets/travel"
 
+# Remove stale git lock from interrupted runs (run this script from repo root)
+$lockPath = ".git/index.lock"
+if (Test-Path $lockPath) {
+  Remove-Item $lockPath -Force
+  Write-Host "Removed stale index.lock" -ForegroundColor Yellow
+}
+
 # Check for files that would cause GitHub push to fail (> 100 MB)
 $big = Get-ChildItem -Path $travelRoot -Recurse -File -ErrorAction SilentlyContinue | Where-Object { $_.Length -gt 100MB }
 if ($big) {
