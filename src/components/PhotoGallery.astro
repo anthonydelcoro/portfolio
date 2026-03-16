@@ -9,7 +9,7 @@ interface Props {
 const { albumId, title = 'Travel' } = Astro.props;
 
 const allImages = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/assets/travel/**/*.{jpg,jpeg,png,webp}',
+  '/src/assets/travel/**/*.{jpg,jpeg,JPG,JPEG,png,PNG,webp,WEBP,heic,HEIC,heif,HEIF}',
   { eager: true }
 );
 
