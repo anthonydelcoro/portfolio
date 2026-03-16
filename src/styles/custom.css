@@ -1,16 +1,29 @@
-/* Home page – prevent horizontal overflow on mobile */
+/* ═══════════════════════════════════════════
+   Global
+   ═══════════════════════════════════════════ */
+
+:root {
+  --__toc-width: var(--sl-sidebar-width);
+}
+
+footer .pagination-links {
+  display: none;
+}
+
+/* ═══════════════════════════════════════════
+   Home page hero
+   ═══════════════════════════════════════════ */
+
 [data-has-hero] .main-frame {
   overflow-x: hidden;
 }
 
-/* Home page – substantial left margin like default splash on desktop only */
 @media (min-width: 50rem) {
   [data-has-hero]:not([data-has-sidebar]) .main-frame {
     padding-inline-start: var(--sl-sidebar-width);
   }
 }
 
-/* Home page hero – left-aligned */
 [data-has-hero] .hero .stack {
   text-align: start;
 }
@@ -50,7 +63,50 @@
   color: var(--sl-color-white);
 }
 
-/* Projects page – date after header, before description */
+/* ═══════════════════════════════════════════
+   Resume page
+   ═══════════════════════════════════════════ */
+
+.resume-content hr {
+  margin-top: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.resume-content hr + * {
+  margin-top: 0.5rem !important;
+}
+
+.resume-date {
+  display: block;
+  font-size: var(--sl-text-sm);
+  color: var(--sl-color-gray-2);
+  margin: 0.25rem 0 0.75rem 0;
+}
+
+.resume-figure {
+  width: 75%;
+  margin: 1rem auto;
+}
+
+.resume-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+/* ═══════════════════════════════════════════
+   Projects page
+   ═══════════════════════════════════════════ */
+
+.projects-page hr {
+  margin-top: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.projects-page hr + * {
+  margin-top: 0.5rem !important;
+}
+
 .projects-page .project-date {
   display: block;
   font-size: var(--sl-text-sm);
@@ -59,11 +115,9 @@
   margin-bottom: 0.25rem;
 }
 
-/* Projects page – section images centered and clickable, extra space above */
 .projects-page .project-figure {
   width: 75%;
-  margin: 0.75rem auto 1.5rem auto;
-  margin-top: 1.25rem;
+  margin: 1.25rem auto 1.5rem;
 }
 
 .projects-page .project-figure a {
@@ -76,7 +130,6 @@
   border-radius: 0.5rem;
 }
 
-/* Projects page – title links styled like regular headers */
 .projects-page h2 a {
   color: inherit;
   text-decoration: none;
@@ -86,56 +139,14 @@
   text-decoration: underline;
 }
 
-/* Projects page – divider spacing (same as resume: more above divider, minimal between divider and header) */
-.projects-page hr {
-  margin-top: 1.5rem;
-  margin-bottom: 0.25rem;
-}
+/* ═══════════════════════════════════════════
+   Reading page
+   ═══════════════════════════════════════════ */
 
-.projects-page hr + * {
-  margin-top: 0.5rem !important;
-}
-
-/* Resume page – images at 75% width, centered */
-.resume-figure {
-  width: 75%;
-  margin: 1rem auto;
-}
-
-.resume-figure img {
-  width: 100%;
-  height: auto;
-  border-radius: 0.5rem;
-}
-
-/* Resume page – divider spacing: more above divider, minimal between divider and header */
-.resume-content hr {
-  margin-top: 1.5rem;
-  margin-bottom: 0.25rem;
-}
-
-.resume-content hr + * {
-  margin-top: 0.5rem !important;
-}
-
-/* Resume page - date under each role/section */
-.resume-date {
-  display: block;
-  font-size: var(--sl-text-sm);
-  color: var(--sl-color-gray-2);
-  margin: 0.25rem 0 0.75rem 0;
-}
-
-/* Hide previous/next page buttons in footer */
-footer .pagination-links {
-  display: none;
-}
-
-/* Reading page – table list (like dsgnevo.com/reading-list) */
 .reading-page table {
   width: 100%;
   max-width: 48rem;
-  margin: 1rem auto 1.5rem auto;
+  margin: 1rem auto 1.5rem;
   border-collapse: collapse;
   font-size: var(--sl-text-sm);
 }
@@ -154,6 +165,9 @@ footer .pagination-links {
 
 .reading-page table th {
   white-space: nowrap;
+  font-weight: 600;
+  background: var(--sl-color-gray-6);
+  color: var(--sl-color-white);
 }
 
 .reading-page table .sort-caret {
@@ -171,13 +185,6 @@ footer .pagination-links {
   opacity: 1;
 }
 
-/* Dark mode: dark header, darker gray alternating rows */
-.reading-page table th {
-  font-weight: 600;
-  background: var(--sl-color-gray-6);
-  color: var(--sl-color-white);
-}
-
 .reading-page table tbody tr:nth-child(odd) {
   background: var(--sl-color-gray-5);
 }
@@ -190,7 +197,6 @@ footer .pagination-links {
   background: var(--sl-color-gray-3);
 }
 
-/* Light mode: dark header, light gray alternating rows (Starlight inverts gray-1…6) */
 [data-theme='light'] .reading-page table th {
   background: var(--sl-color-gray-1);
   color: var(--sl-color-black);
@@ -208,7 +214,107 @@ footer .pagination-links {
   background: var(--sl-color-gray-5);
 }
 
-/* Photo Gallery – index grid */
+/* ═══════════════════════════════════════════
+   Wiki page
+   ═══════════════════════════════════════════ */
+
+.wiki-page h3 {
+  font-size: 0.85em;
+  margin-bottom: 0.25rem;
+}
+
+/* Shared visual style for toggle summaries and standalone items */
+.wiki-toggle > summary,
+.wiki-item {
+  display: block;
+  padding: 0.3rem 0.5rem 0.3rem 1.4rem;
+  border-left: 2px solid var(--sl-color-hairline);
+  border-radius: 0 0.25rem 0.25rem 0;
+  transition: background-color 0.15s;
+  position: relative;
+  font-size: var(--sl-text-body);
+}
+
+.wiki-toggle > summary:hover,
+.wiki-item:hover {
+  background: var(--sl-color-gray-6);
+}
+
+[data-theme='light'] .wiki-toggle > summary:hover,
+[data-theme='light'] .wiki-item:hover {
+  background: var(--sl-color-gray-7);
+}
+
+/* Links inherit color, no underline */
+.wiki-toggle > summary a,
+.wiki-item a {
+  text-decoration: none;
+  color: var(--sl-color-white);
+}
+
+[data-theme='light'] .wiki-toggle > summary a,
+[data-theme='light'] .wiki-item a {
+  color: var(--sl-color-black);
+}
+
+.wiki-toggle > summary a:hover,
+.wiki-item a:hover {
+  color: var(--sl-color-text-accent);
+}
+
+/* Caret on toggle summaries only */
+.wiki-toggle {
+  margin: 0;
+}
+
+.wiki-toggle > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.wiki-toggle > summary::-webkit-details-marker {
+  display: none;
+}
+
+.wiki-toggle > summary::before {
+  content: "▸";
+  position: absolute;
+  left: 0.35rem;
+  font-size: 0.85em;
+  transition: transform 0.15s ease;
+}
+
+.wiki-toggle[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+/* Child list under toggles */
+.wiki-toggle > ul {
+  margin: 0.1rem 0 0.25rem 1.4rem;
+  padding: 0 0 0 0.75rem;
+  border-left: 1px solid var(--sl-color-hairline);
+  list-style: disc;
+}
+
+.wiki-toggle > ul li {
+  margin: 0;
+  padding: 0.1rem 0;
+  font-size: var(--sl-text-sm);
+}
+
+.wiki-toggle > ul li a {
+  text-decoration: none;
+  color: var(--sl-color-gray-2);
+}
+
+.wiki-toggle > ul li a:hover {
+  color: var(--sl-color-text-accent);
+}
+
+/* ═══════════════════════════════════════════
+   Photo gallery – index grid
+   ═══════════════════════════════════════════ */
+
 .gallery-page p {
   margin-bottom: 1.5rem;
 }
@@ -254,7 +360,10 @@ footer .pagination-links {
   background: var(--sl-color-gray-7);
 }
 
-/* Photo Gallery – album masonry layout */
+/* ═══════════════════════════════════════════
+   Photo gallery – album masonry layout
+   ═══════════════════════════════════════════ */
+
 .gallery-album {
   margin-top: 0.5rem;
 }
@@ -294,7 +403,31 @@ footer .pagination-links {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Lightbox overlay */
+.gallery-back {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.gallery-back a {
+  color: var(--sl-color-text-accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.gallery-back a:hover {
+  text-decoration: underline;
+}
+
+.gallery-empty {
+  text-align: center;
+  color: var(--sl-color-gray-3);
+  padding: 3rem 0;
+}
+
+/* ═══════════════════════════════════════════
+   Lightbox
+   ═══════════════════════════════════════════ */
+
 .lightbox {
   position: fixed;
   inset: 0;
@@ -365,85 +498,4 @@ footer .pagination-links {
 
 .lightbox-next {
   right: 0.5rem;
-}
-
-.gallery-back {
-  margin-top: 2rem;
-  text-align: center;
-}
-
-.gallery-back a {
-  color: var(--sl-color-text-accent);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.gallery-back a:hover {
-  text-decoration: underline;
-}
-
-.gallery-empty {
-  text-align: center;
-  color: var(--sl-color-gray-3);
-  padding: 3rem 0;
-}
-
-/* Keep header and content area consistent: same spacing with or without "On this page" TOC */
-:root {
-  --__toc-width: var(--sl-sidebar-width);
-}
-
-/* Wiki page – smaller sub-headers and collapsible lists */
-.wiki-page h3 {
-  font-size: 0.8em; /* ~80% of default; tweak as needed */
-}
-
-/* Base toggle styling */
-.wiki-toggle {
-  margin: 0.05rem 0 0.2rem;
-}
-.wiki-toggle > ul {
-  margin-top: 0;
-  padding-top: 0;
-}
-
-.wiki-toggle > summary {
-  cursor: pointer;
-  font-weight: 400; /* no bold */
-  list-style: none;
-}
-
-/* Hide default marker and use our own caret */
-.wiki-toggle > summary::-webkit-details-marker {
-  display: none;
-}
-
-.wiki-toggle > summary::before {
-  content: "▸";
-  display: inline-block;
-  margin-right: 0.4rem;
-  transform: rotate(0deg);
-  transition: transform 0.15s ease;
-}
-
-.wiki-toggle[open] > summary::before {
-  transform: rotate(90deg);
-}
-
-/* Nested toggles a bit indented and slightly smaller */
-.wiki-toggle--nested {
-  margin-left: 1rem;
-  font-size: 0.9em;
-}
-
-/* Wiki page lists – share visual style (left line + bullets), minimal gap below header */
-.wiki-page ul {
-  margin: 0 0 0.35rem 0.85rem;
-  padding-left: 0.75rem;
-  border-left: 1px solid var(--sl-color-hairline);
-  list-style-position: outside;
-}
-.wiki-toggle .wiki-page ul,
-.wiki-toggle > ul {
-  margin-top: 0;
 }
