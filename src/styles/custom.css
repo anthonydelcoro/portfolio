@@ -218,20 +218,27 @@ footer .pagination-links {
    Wiki page
    ═══════════════════════════════════════════ */
 
-.wiki-page h3 {
-  font-size: 0.85em;
-  margin-bottom: 0;
+.wiki-page h3 + * {
+  margin-top: 0.2rem; /* adjust to taste */
 }
 
-.wiki-page .sl-heading-wrapper + .wiki-toggle,
-.wiki-page .sl-heading-wrapper + .wiki-item {
-  margin-top: 0.35rem;
+.wiki-page .sl-heading-wrapper + * {
+  margin-top: 0.2rem; /* or 0 */
 }
 
 /* Let Starlight handle the details border + caret;
    just override spacing and weight */
 .wiki-toggle {
   margin: 0;
+}
+
+.wiki-page p {
+  margin: 0.2rem 0;
+}
+
+.wiki-toggle,
+.wiki-item {
+  margin-top: 0rem;
 }
 
 .wiki-toggle > summary {
@@ -277,9 +284,11 @@ footer .pagination-links {
 .wiki-item {
   display: block;
   border-inline-start: 2px solid var(--sl-color-gray-5);
-  padding: 0 0.5rem 0 1rem;
+  padding: 0 0.5rem 0 2.25rem;
+
   transition: border-color 0.2s;
 }
+
 
 .wiki-item:hover {
   border-inline-start-color: var(--sl-color-text-accent);
