@@ -1,0 +1,119 @@
+---
+title: Trade Studies
+description: Notes on Trade Studies
+---
+
+When engineers have more than one possible solution, they need a way to compare options without just 
+relying on instinct. That is where a trade study comes in. A trade study is a structured method for 
+evaluating multiple concepts against the criteria that matter most for a project. Instead of asking: 
+*Which idea do we like best?*, a trade study asks: *Which idea best fits our goals, constraints, and 
+priorities?*
+
+Trade studies are common in systems engineering because most projects involve competing factors. A 
+design might be lightweight but expensive, simple but less efficient, or high-performing but difficult 
+to manufacture. A trade study helps make those tradeoffs visible.
+
+---
+
+## What a Trade Study Does
+
+At a high level, a trade study helps:
+
+- compare multiple design options
+- define evaluation criteria clearly
+- assign importance to those criteria
+- score each concept in a consistent way
+- justify why one option was selected over another
+
+This is useful because engineering decisions usually involve compromise. Very rarely is one concept the 
+best in every category.
+
+---
+
+## Example References
+
+Here are a few articles and resources that show trade studies or concept selection methods in practice:
+
+- [NASA Systems Engineering Handbook](https://www.nasa.gov/wp-content/uploads/2018/09/nasa_systems_engineering_handbook_0.pdf)  
+  A broad reference for how trade studies fit into the larger systems engineering process. NASA uses trade studies during concept development and design decisions. :contentReference[oaicite:0]{index=0}
+
+- [NASA Decision Analysis Overview](https://www.nasa.gov/reference/6-8-decision-analysis/)  
+  A short NASA reference page explaining decision analysis as part of systems engineering and technical decision-making. :contentReference[oaicite:1]{index=1}
+
+- [An Evaluation of the Pugh Controlled Convergence Method](https://dspace.mit.edu/bitstream/handle/1721.1/49448/Frey_Pugh%20controlled.pdf)  
+  A useful academic reference on the Pugh matrix, one of the best-known trade study and concept selection methods. :contentReference[oaicite:2]{index=2}
+
+---
+
+## Basic Process
+
+A trade study does not need to be overly complicated. A simple process is usually enough.
+
+### 1. Define the decision
+
+Start by being specific about what you are trying to choose. Are you selecting a material, mechanism, 
+architecture, process, or vendor? The decision should be narrow enough that the concepts can be compared 
+directly.
+
+### 2. List the concepts
+
+Identify the design options you want to compare. These should be realistic alternatives, not random ideas 
+with no chance of being used.
+
+### 3. Choose the criteria
+
+Decide what matters for the project. Common criteria include:
+
+- cost
+- mass
+- power
+- reliability
+- manufacturability
+- schedule
+- safety
+- complexity
+- maintainability
+- performance
+
+The criteria should reflect the real goals of the project, not just what is easy to score.
+
+### 4. Assign weights
+
+Not every criterion matters equally. If safety is more important than cost, it should have a larger weight. 
+Weights help reflect project priorities.
+
+Some teams use percentages that add to 100. Others use a simple scale such as 1 to 5.
+
+### 5. Score each concept
+
+Score each concept against each criterion using a consistent scale. For example, you might use 1 to 5, where:
+
+- 1 = poor
+- 3 = acceptable
+- 5 = excellent
+
+Try to base scores on evidence whenever possible, such as calculations, prior testing, vendor data, or 
+engineering judgment.
+
+### 6. Calculate totals
+
+Multiply each score by its weight, then add the results for each concept. This gives an overall comparison.
+
+This does not mean the highest number always wins automatically, but it gives a structured basis for discussion.
+
+### 7. Check the result
+
+After calculating totals, step back and ask whether the answer makes sense. If the result seems surprising, 
+the team should review the weights, assumptions, and scoring logic. Sometimes the value of the trade study is 
+not just the final ranking, but the discussion it creates.
+
+---
+
+## Common Formats
+
+One of the most common trade study formats is a **decision matrix**, sometimes called a **weighted decision 
+matrix**. Another well-known version is the **Pugh matrix**, where concepts are compared relative to a baseline 
+or datum. NASA also frames this kind of work more broadly under **decision analysis** within systems engineering. 
+
+A weighted decision matrix is often easier for blog posts, reports, and student projects because it is 
+straightforward to explain and calculate.
