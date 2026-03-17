@@ -225,7 +225,7 @@ footer .pagination-links {
 
 .wiki-page .sl-heading-wrapper + .wiki-toggle,
 .wiki-page .sl-heading-wrapper + .wiki-item {
-  margin-top: 0.5rem;
+  margin-top: 0.35rem;
 }
 
 /* Let Starlight handle the details border + caret;
@@ -277,7 +277,7 @@ footer .pagination-links {
 .wiki-item {
   display: block;
   border-inline-start: 2px solid var(--sl-color-gray-5);
-  padding: 0.35rem 0.5rem 0.35rem 1rem;
+  padding: 0 0.5rem 0 1rem;
   transition: border-color 0.2s;
 }
 
