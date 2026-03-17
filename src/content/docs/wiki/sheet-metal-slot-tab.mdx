@@ -1,0 +1,91 @@
+---
+title: Sheet Metal Slot and Tabs
+description: Sizing guidance and design considerations for slot and tab joints.
+---
+
+import { Image } from 'astro:assets';
+import slotTabImg1 from '../../../assets/wiki/DFM/slot_tab_img_1.png';
+import slotTabImg2 from '../../../assets/wiki/DFM/slot_tab_img_2.png';
+import slotTabImg3 from '../../../assets/wiki/DFM/slot_tab_img_3.png';
+
+The slot and tab joint is a method used in assembling sheet metal parts. It involves two perpendicular 
+metal plates, one with a slot and the other with a tab that fits into the slot. This type of joint is 
+relevant for its use in ensuring efficient assembly, consistency, and structural integrity in metalwork.
+
+- **Slot**: A rectangular cut into one part to accept the tab from another part.
+- **Tab**: Protrudes from one part to fit into the slot of another part.
+
+<div class="resume-figure">
+  <iframe
+    width="100%"
+    height="450"
+    src="https://www.youtube.com/embed/DHcrX_ZnByA"
+    title="Top Tips for Tab and Slot Design for Sheet Metal Part Assembly - Cutting Corners Episode 3"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  ></iframe>
+</div>
+
+Slot and tab joints are utilized:
+
+- To improve assembly efficiency by reducing alignment issues.
+- To ensure consistent positioning between components.
+- As reference points for measurements on fabrication drawings.
+
+<figure class="resume-figure">
+  <Image src={slotTabImg3} alt="Example of multiple slot/tab features" />
+</figure>
+
+When designing or using slot and tab joints:
+
+- The fit should not be too tight to avoid stress concentration.
+- Adjustments may be necessary based on material thickness or desired tolerances.
+- Slot and tab should not be used alone for structural stability but rather as an aid to other fastening methods such as welding or riveting.
+- Over-reliance on slots and tabs can lead to reduced strength if not properly designed or implemented.
+
+## Sizing
+
+The slot length and width must always be slightly larger than the tab, but the amount of clearance needed varies based on material thickness. Thinner parts can be designed with a tighter fit due to the higher precision from the laser and reduced kerf effects along the edges.
+
+For example, if both parts are less than 3/8” thick, a nominal clearance of 0.004”–0.005” can be used around all sides of the tab. If one or both parts are 3/8” thick or greater, a nominal clearance of 0.008”–0.010” can be used. Keeping a tight fit across the slot/tab width while letting the length fit more loosely is often beneficial.
+
+| Material Thickness | Clearance (Per Side) |
+| --- | --- |
+| Thin sheet (.060″) | .003″ |
+| Mid-thickness (.125″) | .005″ |
+| Thick plate (.250″+) | .010″–.020″ |
+
+:::tip
+If you’re planning to powder coat, remember to account for the coating thickness in your tab and slot clearance—typically 2–3 thousandths per side.
+:::
+
+Many applications of slot and tab design use the nominal (tight) clearance for the slot width since the tab width (plate thickness) is tightly controlled and not laser cut. Conversely, a more generous clearance (e.g., 2× the nominal clearance, or more) is often used for the slot length to aid in assembly.
+
+<figure class="resume-figure">
+  <Image src={slotTabImg2} alt="Slot/tab clearance guidance" />
+</figure>
+
+Regarding tab depth, most applications where the slot will be plug welded use a tab depth between 1/2 to 2/3 of the slot depth. For instances where the slot is not plug welded it is recommended having the tab extend to be flush with the opposite side of the slot. Note that rust bleed is very likely on painted parts where the slot/tab is not plug welded. With very thin materials (< 0.10”) it may be necessary to use full-depth tabs for ease of assembly, even when the slot will be plug welded subsequently.
+
+<figure class="resume-figure">
+  <Image src={slotTabImg1} alt="Slot and tab joint example" />
+</figure>
+
+In general, a single slot and tab feature should be no longer than 2” to avoid excessive plug weld length.
+
+## Slot and Tab Quantity
+
+Using multiple slot/tab features along the edge of a part is preferred. A single, overly long slot/tab should not be used in place of multiple slot/tab features. Some manufacturing divisions require at least two (2) slot/tab features along each edge, and three (3) if the edge is >24” long.
+
+## Other Considerations
+
+- Slots and tabs should be avoided in areas of high stress or cyclic loading.
+- Slot and tab features can create additional rust points between raw steel surfaces when full welds on both sides of the slot are not specified; paint coverage inside the slot and tab joint should be considered minimal.
+- Some divisions have noted that slot and tab features are not advised on parts ≥ 3/4” thick.
+
+## More Resources
+
+- [Mastering Tab and Slot Design for Efficient Metal Fabrication](https://sendcutsend.com/blog/mastering-tab-and-slot-design-for-efficient-metal-fabrication/?srsltid=AfmBOooUzHK-Wc7SUEe_7AFfGud_UZKAb0HWI2Pde6QoTbij97SkaeSv)
+- [Proper Tab and Slot Design and How to Avoid Serious Issues](https://mentoredengineer.com/warning-on-self-fixturing-parts/)

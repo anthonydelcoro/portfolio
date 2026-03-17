@@ -3,5 +3,130 @@ title: Modeling Bolts in ANSYS
 description: Notes on bolt modeling approaches in ANSYS.
 ---
 
-Work in progress.
+import { Image } from 'astro:assets';
+import Split_Line_Example from '../../../assets/wiki/ANSYS/Split_Line_Example.png';
+import details from '../../../assets/wiki/ANSYS/bolt_details.png';
+import pretention from '../../../assets/wiki/ANSYS/bolt_pretention.png';
+import analysis from '../../../assets/wiki/ANSYS/bolt_analysis_settings.png';
+import tabular from '../../../assets/wiki/ANSYS/bolt_tabular.png';
+import steps from '../../../assets/wiki/ANSYS/bolt_steps.png';
 
+
+The technique discussed below utilizes beam elements to represent a preloaded bolt.
+
+In an assembled structure, modeling bolts as solid bodies usually results in computationally large models that can take a long time to solve. 
+
+It can be very efficient to model the bolts as line bodies rather than solid bodies,
+especially if tens or hundreds of bolts are present.
+
+---
+
+### Preparing the Geometry
+
+When using Beam Connections, we don’t need the geometries for bolts, washers or nuts. However, before deleting/suppressing these bodies, we should prepare geometry for analysis
+
+Imprint the face of the washer/bolt head/nut on the geometry. Although you could tie the vertex of the beam connection to the edge, it is more accurate to tie it to the area representing the region contacting the bolt head/washer/nut. The preload will be distributed on the finite area, which is
+more accurate.
+
+<figure class="resume-figure">
+  <Image src={Split_Line_Example} alt="Split line example" />
+</figure>
+
+In Solidworks, the imprint can be created using the split line tool. Create a sketch of the washer on the applicable face. Then, using the split line tool, select the sketch and face in which you wish to imprint the washer.
+
+See the video for how to use the split line tool.
+
+<div class="resume-figure">
+  <iframe
+    width="100%"
+    height="450"
+    src="https://www.youtube.com/embed/iMLcO-xg2Kc"
+    title="Top Tips for Tab and Slot Design for Sheet Metal Part Assembly - Cutting Corners Episode 3"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  ></iframe>
+</div>
+
+---
+
+### Beam Connections for Bolts
+Using beam connections to represent a bolt is a common practice. This method does not require a solid body geometry.
+
+1. To insert a beam element, right click on “Connections”. Then, hover over Insert and select Beam. It will bring up the properties menu shown on the right.  
+2. Start by setting the radius of your bolt.
+3. Under the “Reference” section, the scope represents the face that the head of the bolt will contact. It does not need to be the washer face, it can be any surface. 
+4. By default, the bolt will be placed at the center of the reference face. To redefine this position, define the “Reference Location” as the top edge of your hole.
+5. The “Pinball Region” represents a conceptual "sphere of influence" around contact or joint elements that defines a search area for interaction with other elements. You can define it as the diameter of your bolt head.
+6. The “Mobile” section, the scope represents the bottom constraint for the bolt. For a threaded hole, you will select the inner face. For a nut connection with a washer, you can select a predefined washed face or the bottom edge (making sure to then define your pin ball radius).
+
+<figure class="resume-figure">
+  <Image src={details} alt="ANSYS details tab" />
+</figure>
+
+Below is a video showing how to establish a beam connection in more detail.
+
+<div class="resume-figure">
+  <iframe
+    width="100%"
+    height="450"
+    src="https://www.youtube.com/embed/gMhIbFRsPsI"
+    title="Top Tips for Tab and Slot Design for Sheet Metal Part Assembly - Cutting Corners Episode 3"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  ></iframe>
+</div>
+
+---
+
+### Setting Bolt Pretention
+
+1. Right clock on “Static Structural” and insert a Bolt Pretention. 
+2. For bolts defined by beams, change the scoping method to beam connection.
+3. Next select a bolt, it is recommended to rename the beam elements to be unique.
+4. Lastly, define your preload.
+
+<figure class="resume-figure">
+  <Image src={pretention} alt="ANSYS pretention settings" />
+</figure>
+
+---
+
+### Defining Load Steps
+
+We want to apply our pretention and then apply our loads. If we do not define two separate steps here, ANSYS will apply everything simultaneously.
+
+1. Select Analysis Settings under Static Structural
+2. Change the number of steps to two.
+3. Set Auto Time Stepping to Off.
+4. Make sure Define By is set to Substeps.
+5. Enter 1 for the number of sub steps
+6. Change the Solver Type to Direct.
+
+<figure class="resume-figure">
+  <Image src={analysis} alt="ANSYS analysis settings" />
+</figure>
+
+Now we want to define our two steps in out bolt pretension feature. We will do this by changing the 
+tabular data for each feature, found in the bottom right of the window.
+
+<figure class="resume-figure">
+  <Image src={tabular} alt="ANSYS taqbualr data settings" />
+</figure>
+
+1. In the newly create second step, change the “Define By” to be lock.
+2. Now in any applied loads, make sure they are set to zero for step one and only applied for step two.
+
+<figure class="resume-figure">
+  <Image src={steps} alt="ANSYS setps settings" />
+</figure>
+
+--- 
+
+### Sources
+
+1. [ANSYS: Connecting Bolts with Assembly](https://innovationspace.ansys.com/product/connecting-bolts-with-assembly/)
+2. [Autodesk: Create a Load Step](https://help.autodesk.com/view/ACMPAN/2024/ENU/?guid=HELIUS-AME-ANSYS-TUT2-LOAD-STEP)

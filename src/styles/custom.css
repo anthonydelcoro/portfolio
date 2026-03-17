@@ -94,6 +94,13 @@ footer .pagination-links {
   border-radius: 0.5rem;
 }
 
+.resume-figure iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
 /* ═══════════════════════════════════════════
    Projects page
    ═══════════════════════════════════════════ */
@@ -261,7 +268,7 @@ footer .pagination-links {
 /* Child list: no left border, compact spacing */
 .wiki-toggle > ul {
   margin: 0 0 0.15rem 0;
-  padding-left: 1.25rem;
+  padding-left: 2.5rem;
   list-style: disc;
 }
 
