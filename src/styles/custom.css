@@ -220,7 +220,12 @@ footer .pagination-links {
 
 .wiki-page h3 {
   font-size: 0.85em;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0;
+}
+
+.wiki-page .sl-heading-wrapper + .wiki-toggle,
+.wiki-page .sl-heading-wrapper + .wiki-item {
+  margin-top: 0.5rem;
 }
 
 /* Let Starlight handle the details border + caret;
