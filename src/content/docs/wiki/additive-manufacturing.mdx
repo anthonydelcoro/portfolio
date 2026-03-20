@@ -3,5 +3,159 @@ title: Additive Manufacturing
 description: Overview of additive manufacturing processes.
 ---
 
-Work in progress.
+import { Image } from 'astro:assets';
+import AM_Technologies from '../../../assets/wiki/AM/AM_Technologies.png';
+import AM_Process_Overview from '../../../assets/wiki/AM/AM_Process_Overview.png';
+import AM_Lattice from '../../../assets/wiki/AM/AM_Lattice.png';
+import AM_Decomp from '../../../assets/wiki/AM/AM_Decomp.png';
+import AM_Decomp_Mapped from '../../../assets/wiki/AM/AM_Decomp_Mapped.png';
 
+**Additive Manufacturing (AM)** is the process of joining
+materials to make objects from 3D model data, usually layer
+upon layer, as opposed to subtractive manufacturing
+methodologies.
+
+*Synonyms:* additive fabrication, additive processes, additive
+techniques, additive layer manufacturing, layer manufacturing,
+and freeform fabrication
+
+---
+
+### Background
+Additive manufacturing is important because it allows engineers to make complex, customized, 
+and low-volume parts directly from digital models with less dependence on tooling than 
+traditional manufacturing. This makes it especially useful for rapid prototyping, design 
+iteration, and geometries that would be difficult to produce through subtractive or 
+formative methods.
+
+Additive manufacturing has also seen massive investments over the last decade. Below are the
+major initiatives in the US.
+
+U.S. Government Focus on Manufacturing:
+- 2010: Manufacturing Enhancement Act
+- 2011: Advanced Manufacturing Partnership
+- 2012: [National Network for Manufacturing Innovation](https://www.youtube.com/watch?v=Yw1jAdMgsW8)
+- 2022: [AM Forward Initiative](https://web.archive.org/web/20220607010642/https://www.whitehouse.gov/briefing-room/statements-releases/2022/05/06/fact-sheet-biden-administration-celebrates-launch-of-am-forward-and-calls-on-congress-to-pass-bipartisan-innovation-act/)
+
+---
+
+### Processes Overview
+For additive manufacturing, the following general process is followed:
+- A part is first designed as a 3D digital model.
+- The model is sliced into many thin cross-sectional layers that the machine can interpret. 
+- The AM system builds the part one layer at a time by selectively placing, joining, or solidifying material in the required locations. 
+- After the build is complete, the part may go through post-processing steps such as support removal, curing, machining, or surface
+ finishing depending on the process and material.
+
+<figure class="img75-figure">
+  <Image src={AM_Process_Overview} alt="Additive Manufacturing Process Overview" />
+</figure>
+
+Additive manufacturing can be broken down into seven major categories as defined by ASTM standards.
+
+- [Vat Photopolymerization](../vat-photopolymerization/)
+- [Powder Bed Fusion (PBF)](../powder-bed-fusion/)
+- [Binder Jetting](../binder-jetting/)
+- [Material Jetting](../material-jetting/)
+- [Sheet Lamination](../sheet-lamination/)
+- [Material Extrusion](../material-extrusion/)
+- [Directed Energy Deposition (DED)](../directed-energy-deposition/)
+
+More information about each category can be found at their dedicated pages linked above.
+
+ASTM F2792 defines the above [7 classes of additive manufacturing](https://www.additivemanufacturing.media/cdn/cms/7_families_print_version.pdf). 
+These classes can be broken down further into the different technologies developed around each.
+Below is a chart from [Protolabs](https://www.hubs.com/guides/3d-printing/#additive-manufacturing-infographic) visually laying out
+the classes of AM and the associated technologies.
+
+<figure class="img75-figure">
+  <Image src={AM_Technologies} alt="Additive Manufacturing Technologies" />
+</figure>
+
+### Design Considerations
+
+These new AM technologies have led to a shift in the relationship between engineers 
+and manufacturers, called concurrent engineering.
+
+**Concurrent Engineering** is s a product-development approach where the design, materials 
+selection, manufacturing planning, and testing/validation are developed at the same time, 
+rather than one after another, and specifically optimized for the processes.
+
+For this to happen, the following needs to be considered:
+- How do product design decisions affect manufacturing?
+- How do manufacturing decisions affect product design?
+
+**Design for Manufacturing (DFM)** is a product-development methodology in which a component or 
+system is designed so it can be manufactured easily, reliably, and at the lowest practical 
+cost using available manufacturing processes.
+- The goal is to design a product that can be manufactured easily and economically at a high quality.
+
+Manufacturing processes impose constraints on geometries that can be produced. These constraints 
+can be either physical limitations or cost increases.
+
+Below is a list of conventional manufacturing processes and their associated design limitations.
+
+**Subtractive:**
+- Turning
+    - Removal of material from workpiece via turning of workpiece.
+    - Best suited to axisymmetric parts, undercuts, and off-axis features often require additional 
+    operations or different processes.
+- Milling
+    - Removal of material from workpiece via turning of tool.
+    - Internal corners, deep narrow pockets, and complex internal features are limited by tool geometry, 
+    access, and tool deflection.
+- Electrical Discharge Machining (EDM)
+    - Erosion of material via electrical discharge.
+    - Only works on electrically conductive materials and is generally slower and more costly than conventional
+     machining for simpler features.
+
+**Formative:**
+- Injection Molding
+    - Formation of a part by injecting molten material into a shaped mold cavity.
+    - Requires high tooling cost and design constraints such as draft angles, uniform wall thickness, and careful 
+    control of shrinkage and part ejection.
+- Sand Casting
+    - Formation of a part by pouring molten metal into a sand mold and allowing it to solidify.
+    - Produces lower dimensional accuracy and surface finish than many other processes, and designs must account for draft,
+     shrinkage, and possible internal defects.
+
+**Additive Manufacturing:**
+
+The main advantage of AM compared to the traditional approaches is its high design freedom, which allows it to produce internal channels, 
+lattice structures, organic geometries, and customized low-volume parts easier. However, AM also has important limitations, including slower 
+production speed, reduced surface finish and dimensional accuracy in some processes, material constraints, 
+and the need to account for build orientation, support structures, and post-processing requirements.
+
+<figure class="img50-figure">
+  <Image src={AM_Lattice} alt="Additive Manufacturing Process Overview" />
+</figure>
+
+---
+
+### Functional Decomposition
+
+An alternative method of classifying AM processes is functional decomposition. This approach:
+- Helps reveal similarities between different processes
+- Can be used to help conceive of new AM technologies
+
+The following decomposition is based on the research paper: "[A Functional Classification Framework for the Conceptual Design of Additive Manufacturing Technologies](https://asmedigitalcollection.asme.org/mechanicaldesign/article-abstract/133/12/121002/455846/A-Functional-Classification-Framework-for-the?redirectedFrom=fulltext)"
+
+<figure class="img75-figure">
+  <Image src={AM_Decomp} alt="Additive Manufacturing Process Functional Decomposition" />
+</figure>
+
+The graph above can be interpreted as a functional map of additive manufacturing
+processes. Each row represents a subfunction common to
+AM, such as storing material, patterning material or energy, creating the primitive, 
+providing material for the next layer, and supporting previous layers, while the entries
+across the row show the different working principles that can achieve that function.
+A given AM technology is then represented by tracing a path through the matrix, 
+selecting one working principle for each subfunction, which allows different processes
+to be compared based on their underlying functional structure rather than just their 
+machine type or material category.
+
+<figure class="img75-figure">
+  <Image src={AM_Decomp_Mapped} alt="Additive Manufacturing Process Functional Decomposition" />
+</figure>
+
+---

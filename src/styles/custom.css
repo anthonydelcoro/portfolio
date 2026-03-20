@@ -11,6 +11,46 @@ footer .pagination-links {
 }
 
 /* ═══════════════════════════════════════════
+   Images
+   ═══════════════════════════════════════════ */
+
+.img75-figure {
+  width: 75%;
+  margin: 1rem auto;
+}
+
+.img75-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+.img75-figure iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+.img50-figure {
+  width: 50%;
+  margin: 1rem auto;
+}
+
+.img50-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+.img50-figure iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+/* ═══════════════════════════════════════════
    Home page hero
    ═══════════════════════════════════════════ */
 
