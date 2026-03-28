@@ -10,6 +10,8 @@ import Vat_Thumb from '../../../assets/wiki/AM/vat/Vat_Thumb.png';
   <Image src={Vat_Thumb} alt="Vat Photopolymerization" />
 </figure>
 
+### Overview
+
 **Description:** A vat of liquid photopolymer resin is cured through selective exposure to light (via a laser
 or projector) which then initiates polymerization and converts the exposed areas to a solid part.
 
@@ -26,3 +28,70 @@ or projector) which then initiates polymerization and converts the exposed areas
 
 **Materials:**
 - UV-Curable Photopolymer Resins
+
+--- 
+
+### Vat Photopolymerization
+
+**Vat Photopolymerization (VP)** is an additive manufacturing process in which 
+liquid photopolymer resin is selectively cured by exposure to light, typically 
+UV light, to build a part layer by layer. In this process family, the resin 
+undergoes a chemical reaction in which a photoinitiator and monomer form polymer 
+chains and a cross-linked solid structure.
+
+For vat photopolymerization, the following general process is followed:
+- A vat is filled with liquid photopolymer resin.
+- A UV laser or projected light pattern selectively cures the resin at the 
+  surface of the current layer.
+- The build platform moves by one layer thickness to allow uncured resin to 
+  cover the next layer.
+- In top-down systems, the platform lowers into the vat and a recoating blade 
+  spreads fresh resin.
+- In bottom-up systems, the platform raises and resin flows between the 
+  transparent window and the previously cured layer.
+- This process repeats until the full geometry is built.
+- After printing, the part is cleaned and typically requires UV and/or thermal 
+  post-curing.
+
+Vat photopolymerization can be divided into different system approaches, 
+including:
+- **Top-down VP**
+- **Bottom-up VP**
+- **Mask Projection Stereolithography**
+- **Continuous Liquid Interface Production (CLIP)**
+
+Mask projection stereolithography uses selective UV exposure of an entire layer 
+through a digital micromirror display (DMD), where illuminated regions are cured 
+and dark regions remain uncured liquid resin. This approach can enable very fine 
+feature resolution, including micro-scale features.
+
+Photopolymerization-based AM processes offer several important advantages:
+- High feature resolution
+- High accuracy
+- Excellent surface finish
+- Small layer thicknesses
+- Potential for high throughput in some systems
+- Compatibility with specialized applications such as functionally graded 
+  materials in related photopolymer processes
+
+However, vat photopolymerization also has important limitations:
+- Support structures are often required for overhangs
+- Supports must typically be removed manually
+- Parts require post-curing
+- Uncured resin can be hazardous to handle
+- Printed materials may be brittle
+- Parts can be sensitive to heat, humidity, and sunlight
+- Materials can be relatively expensive compared to more common thermoplastics
+
+Common vat photopolymerization materials include acrylate- and epoxy-based 
+resins, often formulated as combinations to balance cure speed and final 
+material properties. These systems are generally thermoset-based rather than 
+thermoplastic.
+
+
+Photopolymerization is a chemical reaction
+- Photoinitatior + monomer
+
+Results in polymer chains and cross-linked structure
+- In contrast, thermoplastic polymers (e.g., ABS, polystyrene), do not react when
+processed via phase change 
